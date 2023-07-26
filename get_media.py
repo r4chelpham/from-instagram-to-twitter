@@ -70,5 +70,7 @@ def get_posts(username: str, password: str):
                     except Exception as e:
                          print("Could not download due to:")
                          print(e)
-                
+            
+            post_data.reverse()
+            
         return post_data
