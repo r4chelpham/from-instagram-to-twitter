@@ -4,7 +4,7 @@ GitHub: https://github.com/nathan-149/automated_youtube_channel
 YT channel: https://www.youtube.com/@nang88
 '''
 
-from datetime import datetime, timedelta
+from datetime import datetime
 import instaloader
 import os
 
@@ -53,7 +53,6 @@ def get_posts(username: str, password: str):
                             data.append(post.caption)
                             
                             #get filenames of the media
-                            nodes = post.get_sidecar_nodes()
                             for i in range(post.mediacount):
                                 #only get the first four media of the sidecar post
                                 file_name = str(post.date_utc).replace(":", "-").replace(" ", "_") + '_UTC_' + f'{i+1}' + '.jpg'
