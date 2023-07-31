@@ -48,15 +48,20 @@ def get_posts(username: str, password: str):
                         if post.typename == 'GraphSidecar':
                             if not os.path.exists(folder_name):
                                 os.mkdir(folder_name)
+
                             file_names = []
                             data.append(post.caption)
                             
                             #get filenames of the media
                             nodes = post.get_sidecar_nodes()
-                            for index, node in enumerate(nodes):
-                                file_name = str(post.date_utc).replace(":", "-").replace(" ", "_") + '_UTC_' + f'{index+1}' + '.jpg'
+                            for i in range(post.mediacount):
+                                #only get the first four media of the sidecar post
+                                file_name = str(post.date_utc).replace(":", "-").replace(" ", "_") + '_UTC_' + f'{i+1}' + '.jpg'
                                 file_names.append(file_name)
-                            data.append(file_names)
+                                if (i + 1)%4 == 0 or i == post.mediacount - 1:
+                                    data.append(file_names)
+                                    print(data)
+                                    file_names = []
                             post_data.append(data)
                         else:
                             filename = L.format_filename(post, target=profile.username) + '.jpg'

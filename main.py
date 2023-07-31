@@ -22,12 +22,16 @@ for data in post_data:
     media_ids = []
     caption = '' if not data[0] else data[0] #assign empty string to the caption if there is no caption
     print(caption)
-    for media in data[1]:
-        file_name = file_destination + media
-        media1 = api.media_upload(file_name)
-        media_id = media1.media_id
-        media_ids.append(media_id)
-        print(media_ids)
 
-    client.create_tweet(text = caption, media_ids= media_ids, user_auth = True)
+    for i in range(1, len(data)):
+        for media in data[i]:
+            file_name = file_destination + media
+            m = api.media_upload(file_name)
+            media_id = m.media_id
+            media_ids.append(media_id)
+            print(media_ids)
+
+        client.create_tweet(text = caption, media_ids= media_ids, user_auth = True)
+        media_ids = []
+    
 
