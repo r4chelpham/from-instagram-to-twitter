@@ -10,7 +10,6 @@ This was made to automate the posting process for the Twitter account of the soc
 The initial commit has a lot of bugs such as:
 
 - Not being able to post videos
-- Doesn't check if there are more than 4 media in a sidecar post (as Twitter can only upload 4 photos at a time)
 - Can only download posts that are posted at the current date (instead of just the most recent post)
 
 This is my first ever program that isn't just a random number generator so any feedback would be much appreciated!
